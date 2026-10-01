@@ -17,14 +17,11 @@
     >
 </head>
 
-
 <body>
 
     <div class="game-container">
 
-        <!-- =================================================
-             CABECERA
-             ================================================= -->
+        <!-- CABECERA -->
 
         <header class="header">
 
@@ -43,9 +40,7 @@
         </header>
 
 
-        <!-- =================================================
-             PANTALLA DE INICIO
-             ================================================= -->
+        <!-- PANTALLA DE INICIO -->
 
         <section
             id="start-screen"
@@ -68,7 +63,6 @@
                     sin vidas.
                 </p>
 
-
                 <div class="rules">
 
                     <div class="rule">
@@ -88,7 +82,6 @@
 
                 </div>
 
-
                 <button
                     id="start-button"
                     class="main-button"
@@ -101,17 +94,12 @@
         </section>
 
 
-        <!-- =================================================
-             PANTALLA DE JUEGO
-             ================================================= -->
+        <!-- PANTALLA DE JUEGO -->
 
         <section
             id="game-screen"
             class="screen hidden"
         >
-
-
-            <!-- MARCADOR -->
 
             <div class="scoreboard">
 
@@ -129,7 +117,6 @@
                     </span>
 
                 </div>
-
 
                 <div class="score-item">
 
@@ -159,21 +146,14 @@
                         ▼
                     </div>
 
-
                     <div
                         id="roulette"
                         class="roulette"
                     >
 
-                        <!--
-                            Las etiquetas se generan
-                            automáticamente desde game.js.
-                        -->
-
                         <div
                             id="roulette-labels"
                         ></div>
-
 
                         <div class="roulette-center">
                             ⚽
@@ -202,14 +182,12 @@
                     <span
                         id="category-icon"
                         class="category-icon"
-                    >
-                    </span>
+                    ></span>
 
                     <span
                         id="category-name"
                         class="category-name"
-                    >
-                    </span>
+                    ></span>
 
                 </div>
 
@@ -221,22 +199,17 @@
                     class="question-card hidden"
                 >
 
-                    <h2 id="question">
-                    </h2>
-
+                    <h2 id="question"></h2>
 
                     <div
                         id="answers"
                         class="answers"
-                    >
-                    </div>
-
+                    ></div>
 
                     <div
                         id="question-feedback"
                         class="question-feedback hidden"
-                    >
-                    </div>
+                    ></div>
 
                 </div>
 
@@ -245,9 +218,7 @@
         </section>
 
 
-        <!-- =================================================
-             PANTALLA DE DERROTA
-             ================================================= -->
+        <!-- PANTALLA DE DERROTA -->
 
         <section
             id="lose-screen"
@@ -269,7 +240,6 @@
                     Tendrás que empezar de nuevo.
                 </p>
 
-
                 <div class="final-score">
 
                     <span id="final-score">
@@ -281,7 +251,6 @@
                     </small>
 
                 </div>
-
 
                 <button
                     id="restart-button"
@@ -295,9 +264,7 @@
         </section>
 
 
-        <!-- =================================================
-             PANTALLA DE VICTORIA
-             ================================================= -->
+        <!-- PANTALLA DE VICTORIA -->
 
         <section
             id="win-screen"
@@ -314,27 +281,28 @@
                     ¡PRUEBA SUPERADA!
                 </h2>
 
-                <p>
-                    Has conseguido los 5 aciertos.
+                <p class="victory-message">
+                    Has desbloqueado la última clave:
                 </p>
-
 
                 <div class="unlock-box">
 
                     <span>
-                        PIEZA DEL CÓDIGO
+                        ÚLTIMA CLAVE
                     </span>
 
                     <strong id="password">
-                        XX
+                        ESTERNOCLEIDOMASTOIDEO
                     </strong>
 
                 </div>
 
+                <div class="code-line">
+                    35: RLLF
+                </div>
 
-                <p class="small-final-text">
-                    Guarda esta pieza. La necesitarás
-                    para resolver el escape room.
+                <p class="last-test-message">
+                    Puedes proceder con la última prueba.
                 </p>
 
             </div>

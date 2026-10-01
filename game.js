@@ -17,61 +17,66 @@ const TARGET_SCORE = 5;
    ========================================================= */
 
 const categories = [
+
     {
         id: "ballondor",
         name: "BALÓN DE ORO",
         icon: "🏆"
     },
+
     {
         id: "champions",
         name: "CHAMPIONS",
         icon: "⭐"
     },
+
     {
         id: "mundial",
         name: "MUNDIAL",
         icon: "🌍"
     },
+
     {
         id: "fichajes",
         name: "FICHAJES",
         icon: "💰"
     },
+
     {
         id: "cadiz",
         name: "CÁDIZ CF",
         icon: "🟡"
     },
+
     {
         id: "fc27",
         name: "FC 27",
         icon: "🎮"
     },
+
     {
         id: "laliga",
         name: "LALIGA",
         icon: "🇪🇸"
     },
+
     {
         id: "premier",
         name: "PREMIER",
         icon: "🏴"
     },
+
     {
         id: "matraca",
         name: "MATRACA",
         icon: "🥴"
     }
+
 ];
 
 
 /* =========================================================
-   BANCO DE PREGUNTAS
-   =========================================================
-
-   correct = índice de la respuesta correcta.
-   Las respuestas se mezclan automáticamente antes
-   de mostrarlas, por lo que el índice se actualiza.
+   PREGUNTAS
    ========================================================= */
 
 const questionBank = {
@@ -85,7 +90,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué jugador ha ganado más Balones de Oro en la historia?",
+                "¿Qué jugador ha ganado más Balones de Oro?",
 
             answers: [
                 "Lionel Messi",
@@ -199,14 +204,14 @@ const questionBank = {
 
 
     /* =====================================================
-       CHAMPIONS LEAGUE
+       CHAMPIONS
        ===================================================== */
 
     champions: [
 
         {
             question:
-                "¿Qué club ha ganado más veces la Copa de Europa/Champions League?",
+                "¿Qué club ha ganado más veces la Copa de Europa/Champions?",
 
             answers: [
                 "Real Madrid",
@@ -220,7 +225,7 @@ const questionBank = {
 
         {
             question:
-                "¿Quién es el máximo goleador histórico de la Champions League?",
+                "¿Quién es el máximo goleador histórico de la Champions?",
 
             answers: [
                 "Lionel Messi",
@@ -234,21 +239,7 @@ const questionBank = {
 
         {
             question:
-                "¿Cuántos goles ha marcado Cristiano Ronaldo en la Champions League?",
-
-            answers: [
-                "120",
-                "128",
-                "135",
-                "140"
-            ],
-
-            correct: 3
-        },
-
-        {
-            question:
-                "¿Qué equipo ganó la Champions League en 2005 tras remontar un 3-0 al descanso?",
+                "¿Qué equipo ganó la Champions League en 2005?",
 
             answers: [
                 "Manchester United",
@@ -262,7 +253,7 @@ const questionBank = {
 
         {
             question:
-                "¿Contra qué equipo remontó Liverpool en la final de Champions de 2005?",
+                "¿Contra qué equipo remontó Liverpool en la final de 2005?",
 
             answers: [
                 "Juventus",
@@ -276,21 +267,7 @@ const questionBank = {
 
         {
             question:
-                "¿En qué año pasó a llamarse oficialmente Champions League la antigua Copa de Europa?",
-
-            answers: [
-                "1989",
-                "1992",
-                "1995",
-                "1998"
-            ],
-
-            correct: 1
-        },
-
-        {
-            question:
-                "¿Qué club ganó la primera edición de la Copa de Europa?",
+                "¿Qué club ganó la primera Copa de Europa?",
 
             answers: [
                 "Real Madrid",
@@ -304,7 +281,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué entrenador ha ganado la Champions League con tres clubes diferentes?",
+                "¿Qué entrenador ha ganado la Champions con tres clubes diferentes?",
 
             answers: [
                 "Pep Guardiola",
@@ -314,6 +291,34 @@ const questionBank = {
             ],
 
             correct: 1
+        },
+
+        {
+            question:
+                "¿En qué año pasó a llamarse oficialmente Champions League?",
+
+            answers: [
+                "1989",
+                "1992",
+                "1995",
+                "1998"
+            ],
+
+            correct: 1
+        },
+
+        {
+            question:
+                "¿Qué club ganó la Champions en 2012?",
+
+            answers: [
+                "Chelsea",
+                "Bayern",
+                "Real Madrid",
+                "Barcelona"
+            ],
+
+            correct: 0
         }
 
     ],
@@ -411,7 +416,7 @@ const questionBank = {
 
         {
             question:
-                "¿Quién marcó dos goles para Argentina en la final del Mundial de 2022?",
+                "¿Quién marcó dos goles para Argentina en la final de 2022?",
 
             answers: [
                 "Julián Álvarez",
@@ -448,7 +453,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué jugador protagonizó el famoso fichaje de 222 millones de euros del Barcelona al PSG?",
+                "¿Qué jugador protagonizó el fichaje de 222 millones de euros del Barcelona al PSG?",
 
             answers: [
                 "Kylian Mbappé",
@@ -476,7 +481,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué jugador fichó el Real Madrid procedente del Tottenham en 2013 por una cifra récord en aquel momento?",
+                "¿Qué jugador fichó el Real Madrid procedente del Tottenham en 2013?",
 
             answers: [
                 "Gareth Bale",
@@ -504,7 +509,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué club fichó a Eden Hazard procedente del Chelsea en 2019?",
+                "¿Qué club fichó a Eden Hazard procedente del Chelsea?",
 
             answers: [
                 "Barcelona",
@@ -583,7 +588,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué legendario futbolista salvadoreño es uno de los grandes iconos históricos del Cádiz?",
+                "¿Qué legendario futbolista salvadoreño es uno de los grandes iconos del Cádiz?",
 
             answers: [
                 "Hugo Sánchez",
@@ -597,7 +602,7 @@ const questionBank = {
 
         {
             question:
-                "¿Cómo se conoce popularmente a Jorge González, leyenda del Cádiz?",
+                "¿Cómo se conoce popularmente a Jorge González?",
 
             answers: [
                 "El Pibe",
@@ -625,7 +630,7 @@ const questionBank = {
 
         {
             question:
-                "¿Quién es uno de los máximos goleadores históricos del Cádiz CF con 75 goles según los registros históricos del club?",
+                "¿Quién es una de las grandes leyendas goleadoras históricas del Cádiz?",
 
             answers: [
                 "Mágico González",
@@ -639,13 +644,13 @@ const questionBank = {
 
         {
             question:
-                "¿Quién aparece como máximo goleador histórico del Cádiz CF con 82 goles en los registros históricos consultados?",
+                "¿Qué jugador es conocido como Mágico González?",
 
             answers: [
+                "Jorge González",
                 "Paco Baena",
-                "Mágico González",
                 "Pepe Mejías",
-                "Pollito Roldán"
+                "Juan José"
             ],
 
             correct: 0
@@ -653,30 +658,30 @@ const questionBank = {
 
         {
             question:
-                "¿En qué año ganó el Cádiz su primer título de Segunda División?",
+                "¿Qué colores identifican tradicionalmente al Cádiz CF?",
 
             answers: [
-                "1991",
-                "2001",
-                "2005",
-                "2010"
+                "Rojo y blanco",
+                "Azul y amarillo",
+                "Verde y blanco",
+                "Azul y rojo"
             ],
 
-            correct: 2
+            correct: 1
         },
 
         {
             question:
-                "¿En qué año consiguió el Cádiz el título de Tercera División que figura en su palmarés histórico?",
+                "¿Cómo se conoce al estadio del Cádiz CF?",
 
             answers: [
-                "2005",
-                "2007",
-                "2009",
-                "2011"
+                "Ramón de Carranza",
+                "Nuevo Mirandilla",
+                "El Carranza",
+                "Ambas B y C"
             ],
 
-            correct: 2
+            correct: 3
         }
 
     ],
@@ -690,7 +695,7 @@ const questionBank = {
 
         {
             question:
-                "¿Cómo se llama el nuevo espacio social de fútbol de EA SPORTS FC 27?",
+                "¿Cómo se llama el nuevo espacio social de EA SPORTS FC 27?",
 
             answers: [
                 "The Grounds",
@@ -718,7 +723,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué modo de FC 27 incorpora una nueva Galería FUT?",
+                "¿Qué modo incorpora una nueva Galería FUT?",
 
             answers: [
                 "Carrera",
@@ -746,35 +751,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué tipo de valoración refleja la forma, moral y estado físico de los futbolistas en el nuevo sistema de FC 27?",
-
-            answers: [
-                "GRL dinámico",
-                "GRL clásico",
-                "GRL histórico",
-                "GRL definitivo"
-            ],
-
-            correct: 0
-        },
-
-        {
-            question:
-                "¿Cuántos futbolistas aproximadamente incluye FC 27 según EA?",
-
-            answers: [
-                "Más de 10.000",
-                "Más de 15.000",
-                "Más de 21.000",
-                "Más de 30.000"
-            ],
-
-            correct: 2
-        },
-
-        {
-            question:
-                "¿Qué modo de FC 27 permite jugar pachangas y partidos 1 contra 1 dentro de The Grounds?",
+                "¿Qué espacio permite jugar pachangas y partidos dentro de FC 27?",
 
             answers: [
                 "The Grounds",
@@ -788,13 +765,13 @@ const questionBank = {
 
         {
             question:
-                "¿Qué novedad aparece en el modo Carrera de FC 27?",
+                "¿Qué modo de juego está orientado a gestionar un club?",
 
             answers: [
-                "Mercado de transferibles reconstruido",
-                "Eliminación de los fichajes",
-                "Solo jugadores históricos",
-                "Desaparición de los entrenadores"
+                "Carrera",
+                "Clubes",
+                "The Grounds",
+                "Volta"
             ],
 
             correct: 0
@@ -867,7 +844,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué jugador tiene el récord de Trofeos Pichichi?",
+                "¿Quién tiene el récord de Trofeos Pichichi?",
 
             answers: [
                 "Cristiano Ronaldo",
@@ -881,7 +858,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué equipo fue campeón de la primera edición de LaLiga?",
+                "¿Qué equipo ganó la primera edición de LaLiga?",
 
             answers: [
                 "Real Madrid",
@@ -891,20 +868,6 @@ const questionBank = {
             ],
 
             correct: 1
-        },
-
-        {
-            question:
-                "¿Qué portero ha ganado más Trofeos Zamora?",
-
-            answers: [
-                "Iker Casillas",
-                "Víctor Valdés",
-                "Jan Oblak",
-                "Thibaut Courtois"
-            ],
-
-            correct: 2
         },
 
         {
@@ -919,6 +882,20 @@ const questionBank = {
             ],
 
             correct: 1
+        },
+
+        {
+            question:
+                "¿Qué jugador ganó ocho veces el Trofeo Pichichi?",
+
+            answers: [
+                "Cristiano Ronaldo",
+                "Telmo Zarra",
+                "Lionel Messi",
+                "Hugo Sánchez"
+            ],
+
+            correct: 2
         }
 
     ],
@@ -946,7 +923,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué jugador marcó 36 goles en una temporada de Premier League, récord de la competición en una temporada?",
+                "¿Quién marcó 36 goles en una temporada de Premier League?",
 
             answers: [
                 "Mohamed Salah",
@@ -974,7 +951,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué club ganó la Premier League de forma invicta en la temporada 2003/04?",
+                "¿Qué club ganó la Premier League de forma invicta en 2003/04?",
 
             answers: [
                 "Chelsea",
@@ -988,7 +965,7 @@ const questionBank = {
 
         {
             question:
-                "¿Quién fue conocido como 'The King' en el Newcastle United y es el máximo goleador histórico de la Premier League?",
+                "¿Quién es el máximo goleador histórico del Newcastle y de la Premier?",
 
             answers: [
                 "Alan Shearer",
@@ -1002,7 +979,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué equipo ganó el histórico triplete inglés en 1998/99 junto con Premier League y FA Cup?",
+                "¿Qué club ganó el histórico triplete inglés en 1998/99?",
 
             answers: [
                 "Arsenal",
@@ -1016,7 +993,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué entrenador dirigió al Leicester City cuando ganó sorprendentemente la Premier League 2015/16?",
+                "¿Qué entrenador dirigió al Leicester cuando ganó la Premier 2015/16?",
 
             answers: [
                 "Claudio Ranieri",
@@ -1030,7 +1007,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué jugador francés fue máximo goleador de la Premier League en cuatro temporadas con el Arsenal?",
+                "¿Qué delantero francés ganó cuatro veces el Pichichi de la Premier con Arsenal?",
 
             answers: [
                 "Eric Cantona",
@@ -1113,7 +1090,7 @@ const questionBank = {
 
 
 /* =========================================================
-   ESTADO DEL JUEGO
+   ESTADO
    ========================================================= */
 
 let score = 0;
@@ -1132,7 +1109,7 @@ let wheelRotation = 0;
 
 
 /* =========================================================
-   ELEMENTOS HTML
+   ELEMENTOS
    ========================================================= */
 
 const startScreen =
@@ -1158,6 +1135,9 @@ const spinButton =
 
 const roulette =
     document.getElementById("roulette");
+
+const rouletteLabels =
+    document.getElementById("roulette-labels");
 
 const scoreElement =
     document.getElementById("score");
@@ -1189,6 +1169,51 @@ const feedbackElement =
 const finalScoreElement =
     document.getElementById("final-score");
 
+const passwordElement =
+    document.getElementById("password");
+
+
+/* =========================================================
+   CREAR ETIQUETAS DE LA RULETA
+   ========================================================= */
+
+function createWheelLabels() {
+
+    rouletteLabels.innerHTML = "";
+
+
+    categories.forEach(
+        (category, index) => {
+
+            const label =
+                document.createElement("div");
+
+
+            label.className =
+                `roulette-label label-${index + 1}`;
+
+
+            label.style.setProperty(
+                "--angle",
+                `${index * 40 + 20}deg`
+            );
+
+
+            label.innerHTML = `
+                ${category.icon}
+                ${category.name}
+            `;
+
+
+            rouletteLabels.appendChild(
+                label
+            );
+
+        }
+    );
+
+}
+
 
 /* =========================================================
    INICIAR JUEGO
@@ -1210,11 +1235,16 @@ function startGame() {
 
     usedQuestions = {};
 
-    categories.forEach(category => {
 
-        usedQuestions[category.id] = [];
+    categories.forEach(
+        category => {
 
-    });
+            usedQuestions[
+                category.id
+            ] = [];
+
+        }
+    );
 
 
     roulette.style.transform =
@@ -1226,26 +1256,42 @@ function startGame() {
     updateLives();
 
 
-    startScreen.classList.add("hidden");
+    startScreen.classList.add(
+        "hidden"
+    );
 
-    loseScreen.classList.add("hidden");
+    loseScreen.classList.add(
+        "hidden"
+    );
 
-    winScreen.classList.add("hidden");
+    winScreen.classList.add(
+        "hidden"
+    );
 
-    gameScreen.classList.remove("hidden");
+    gameScreen.classList.remove(
+        "hidden"
+    );
 
 
-    categoryDisplay.classList.add("hidden");
+    categoryDisplay.classList.add(
+        "hidden"
+    );
 
-    questionCard.classList.add("hidden");
+    questionCard.classList.add(
+        "hidden"
+    );
 
     feedbackElement.className =
         "question-feedback hidden";
 
-    feedbackElement.innerHTML = "";
+    feedbackElement.innerHTML =
+        "";
 
 
     spinButton.disabled = false;
+
+
+    createWheelLabels();
 
 }
 
@@ -1262,7 +1308,7 @@ function restartGame() {
 
 
 /* =========================================================
-   ACTUALIZAR MARCADOR
+   MARCADOR
    ========================================================= */
 
 function updateScore() {
@@ -1274,7 +1320,7 @@ function updateScore() {
 
 
 /* =========================================================
-   ACTUALIZAR VIDAS
+   VIDAS
    ========================================================= */
 
 function updateLives() {
@@ -1328,67 +1374,84 @@ function spinRoulette() {
 
     spinButton.disabled = true;
 
-    questionCard.classList.add("hidden");
 
-    categoryDisplay.classList.add("hidden");
+    questionCard.classList.add(
+        "hidden"
+    );
+
+    categoryDisplay.classList.add(
+        "hidden"
+    );
 
     feedbackElement.className =
         "question-feedback hidden";
 
 
     /*
-       Elegimos una categoría al azar.
+       Elegimos el segmento ganador.
     */
 
-    const categoryIndex =
+    const winningIndex =
         Math.floor(
             Math.random() *
             categories.length
         );
 
+
     currentCategory =
-        categories[categoryIndex];
+        categories[winningIndex];
 
 
     /*
-       Cada segmento ocupa 40 grados.
+       Cada segmento ocupa 40º.
 
-       El centro de cada segmento es:
+       El centro del segmento es:
 
-       20, 60, 100, 140...
+       20º
+       60º
+       100º
+       ...
+
+       La flecha está a 270º.
+
+       Queremos que el centro del segmento
+       ganador termine exactamente bajo ella.
     */
 
     const segmentCenter =
-        categoryIndex * 40 + 20;
+        winningIndex * 40 + 20;
 
 
-    /*
-       El puntero está arriba.
-
-       Para colocar el centro del segmento
-       seleccionado debajo del puntero:
-
-       270 - centro del segmento
-    */
-
-    const targetAngle =
+    const desiredRotation =
         270 - segmentCenter;
 
 
     /*
-       Añadimos varias vueltas para que
-       parezca una ruleta real.
+       Damos entre 5 y 7 vueltas completas.
     */
 
-    const fullTurns =
-        5 + Math.floor(
+    const extraTurns =
+        5 +
+        Math.floor(
             Math.random() * 3
         );
 
 
-    wheelRotation +=
-        fullTurns * 360 +
-        targetAngle;
+    /*
+       Normalizamos el ángulo deseado
+       para evitar acumulaciones extrañas.
+    */
+
+    const normalizedTarget =
+        (
+            desiredRotation % 360 +
+            360
+        ) % 360;
+
+
+    wheelRotation =
+        extraTurns * 360 +
+        normalizedTarget;
 
 
     roulette.style.transform =
@@ -1419,6 +1482,7 @@ function showCategory() {
     categoryName.textContent =
         currentCategory.name;
 
+
     categoryDisplay.classList.remove(
         "hidden"
     );
@@ -1440,17 +1504,13 @@ function showCategory() {
    OBTENER PREGUNTA
    ========================================================= */
 
-function getRandomQuestion(categoryId) {
+function getRandomQuestion(
+    categoryId
+) {
 
     const questions =
         questionBank[categoryId];
 
-
-    /*
-       Si ya hemos utilizado todas las
-       preguntas de esta categoría,
-       vaciamos su historial.
-    */
 
     if (
         usedQuestions[categoryId].length >=
@@ -1462,50 +1522,53 @@ function getRandomQuestion(categoryId) {
     }
 
 
-    let available =
-        questions.filter(
-            (_, index) =>
-                !usedQuestions[
-                    categoryId
-                ].includes(index)
-        );
+    const availableIndexes =
+        questions
+            .map(
+                (_, index) => index
+            )
+            .filter(
+                index =>
+                    !usedQuestions[
+                        categoryId
+                    ].includes(index)
+            );
 
 
-    const randomIndex =
+    const randomPosition =
         Math.floor(
             Math.random() *
-            available.length
+            availableIndexes.length
         );
 
 
-    const selectedQuestion =
-        available[randomIndex];
+    const selectedIndex =
+        availableIndexes[
+            randomPosition
+        ];
 
 
-    const originalIndex =
-        questions.indexOf(
-            selectedQuestion
-        );
-
-
-    usedQuestions[categoryId].push(
-        originalIndex
+    usedQuestions[
+        categoryId
+    ].push(
+        selectedIndex
     );
 
 
-    return selectedQuestion;
+    return questions[
+        selectedIndex
+    ];
 
 }
 
 
 /* =========================================================
-   MEZCLAR ARRAY
+   MEZCLAR RESPUESTAS
    ========================================================= */
 
 function shuffleArray(array) {
 
-    const copy =
-        [...array];
+    const copy = [...array];
 
 
     for (
@@ -1553,29 +1616,23 @@ function showQuestion() {
         currentQuestion.question;
 
 
-    answersElement.innerHTML = "";
+    answersElement.innerHTML =
+        "";
 
-
-    /*
-       Creamos objetos para mantener
-       la relación entre respuesta y
-       respuesta correcta.
-    */
 
     const answerObjects =
         currentQuestion.answers.map(
             (answer, index) => ({
+
                 text: answer,
+
                 correct:
                     index ===
                     currentQuestion.correct
+
             })
         );
 
-
-    /*
-       Mezclamos las respuestas.
-    */
 
     const shuffledAnswers =
         shuffleArray(
@@ -1647,11 +1704,6 @@ function selectAnswer(
         );
 
 
-    /*
-       Evitamos que pueda pulsar
-       varias respuestas.
-    */
-
     buttons.forEach(
         button => {
 
@@ -1660,11 +1712,6 @@ function selectAnswer(
         }
     );
 
-
-    /*
-       Mostramos cuál era
-       la respuesta correcta.
-    */
 
     buttons.forEach(
         button => {
@@ -1702,7 +1749,7 @@ function selectAnswer(
 
 
 /* =========================================================
-   RESPUESTA CORRECTA
+   CORRECTA
    ========================================================= */
 
 function handleCorrectAnswer(
@@ -1725,16 +1772,13 @@ function handleCorrectAnswer(
 
 
     feedbackElement.innerHTML =
-        "✅ ¡CORRECTO! " +
-        `Llevas ${score} de ` +
-        `${TARGET_SCORE} aciertos.`;
+        `✅ ¡CORRECTO! Llevas ` +
+        `${score} de ${TARGET_SCORE} aciertos.`;
 
 
-    /*
-       Si llega a 5, gana.
-    */
-
-    if (score >= TARGET_SCORE) {
+    if (
+        score >= TARGET_SCORE
+    ) {
 
         setTimeout(
             () => {
@@ -1749,11 +1793,6 @@ function handleCorrectAnswer(
 
     }
 
-
-    /*
-       Si no ha ganado, puede volver
-       a girar la ruleta.
-    */
 
     setTimeout(
         () => {
@@ -1781,7 +1820,7 @@ function handleCorrectAnswer(
 
 
 /* =========================================================
-   RESPUESTA INCORRECTA
+   INCORRECTA
    ========================================================= */
 
 function handleWrongAnswer(
@@ -1804,16 +1843,12 @@ function handleWrongAnswer(
 
 
     feedbackElement.innerHTML =
-        "❌ ¡INCORRECTO! " +
-        "Has perdido una vida.";
+        "❌ ¡INCORRECTO! Has perdido una vida.";
 
 
-    /*
-       Si se queda sin vidas,
-       pierde la partida.
-    */
-
-    if (lives <= 0) {
+    if (
+        lives <= 0
+    ) {
 
         setTimeout(
             () => {
@@ -1828,11 +1863,6 @@ function handleWrongAnswer(
 
     }
 
-
-    /*
-       Si todavía tiene vidas,
-       continúa jugando.
-    */
 
     setTimeout(
         () => {
@@ -1860,7 +1890,7 @@ function handleWrongAnswer(
 
 
 /* =========================================================
-   PANTALLA DE DERROTA
+   DERROTA
    ========================================================= */
 
 function showLose() {
@@ -1884,7 +1914,7 @@ function showLose() {
 
 
 /* =========================================================
-   PANTALLA DE VICTORIA
+   VICTORIA
    ========================================================= */
 
 function showWin() {
@@ -1899,14 +1929,12 @@ function showWin() {
 
 
     /*
-       AQUÍ PONDREMOS LA PIEZA REAL
-       DEL CÓDIGO CUANDO DECIDAMOS
-       EL CÓDIGO FINAL DEL ESCAPE ROOM.
+       De momento dejamos XX.
+       Más adelante pondremos aquí
+       la cuarta pieza definitiva.
     */
 
-    document.getElementById(
-        "password"
-    ).textContent =
+    passwordElement.textContent =
         "XX";
 
 
@@ -1938,5 +1966,7 @@ spinButton.addEventListener(
 
 
 /* =========================================================
-   FIN
+   PREPARAR RULETA AL CARGAR
    ========================================================= */
+
+createWheelLabels();

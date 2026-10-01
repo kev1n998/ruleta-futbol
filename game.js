@@ -1,6 +1,6 @@
 /* =========================================================
    LA RULETA DEL FÚTBOL
-   PRUEBA 4 DEL ESCAPE ROOM
+   PRUEBA 4 · ESCAPE ROOM
    ========================================================= */
 
 
@@ -14,6 +14,16 @@ const TARGET_SCORE = 5;
 
 /* =========================================================
    CATEGORÍAS
+
+   IMPORTANTE:
+
+   El orden de este array es EXACTAMENTE el mismo
+   que el orden visual de la ruleta.
+
+   Cada categoría ocupa 40º.
+
+   La primera categoría tiene su centro a 0º,
+   es decir, exactamente a las 12 en punto.
    ========================================================= */
 
 const categories = [
@@ -1062,7 +1072,7 @@ const questionBank = {
 
 
 /* =========================================================
-   ESTADO DEL JUEGO
+   ESTADO
    ========================================================= */
 
 let score = 0;
@@ -1139,12 +1149,18 @@ const feedbackElement =
 const finalScoreElement =
     document.getElementById("final-score");
 
-const passwordElement =
-    document.getElementById("password");
-
 
 /* =========================================================
-   CREAR LAS ETIQUETAS
+   CREAR ETIQUETAS
+
+   MUY IMPORTANTE:
+
+   Los ángulos aquí son los centros de los segmentos.
+
+   0º   = 12 en punto
+   40º  = siguiente segmento
+   80º  = siguiente
+   etc.
    ========================================================= */
 
 function createWheelLabels() {
@@ -1163,14 +1179,24 @@ function createWheelLabels() {
                 `roulette-label label-${index + 1}`;
 
 
+            /*
+               El centro de cada segmento está:
+
+               index * 40 grados
+            */
+
+            const angle =
+                index * 40;
+
+
             label.style.setProperty(
                 "--angle",
-                `${index * 40 + 20}deg`
+                `${angle}deg`
             );
 
 
             label.innerHTML =
-                `${category.icon} ${category.name}`;
+                `${category.icon}<br>${category.name}`;
 
 
             rouletteLabels.appendChild(
@@ -1190,9 +1216,11 @@ function createWheelLabels() {
 function startGame() {
 
     score = 0;
+
     lives = MAX_LIVES;
 
     currentCategory = null;
+
     currentQuestion = null;
 
     isSpinning = false;
@@ -1221,9 +1249,7 @@ function startGame() {
 
 
     /*
-       Forzamos al navegador a registrar
-       el reset antes de volver a activar
-       la animación.
+       Forzar actualización del navegador.
     */
 
     roulette.offsetHeight;
@@ -1234,6 +1260,7 @@ function startGame() {
 
 
     updateScore();
+
     updateLives();
 
 
@@ -1261,7 +1288,6 @@ function startGame() {
     questionCard.classList.add(
         "hidden"
     );
-
 
     feedbackElement.className =
         "question-feedback hidden";
@@ -1309,6 +1335,7 @@ function updateLives() {
 
     let hearts = "";
 
+
     for (
         let i = 0;
         i < MAX_LIVES;
@@ -1327,6 +1354,7 @@ function updateLives() {
 
     }
 
+
     livesElement.textContent =
         hearts.trim();
 
@@ -1335,6 +1363,22 @@ function updateLives() {
 
 /* =========================================================
    GIRAR RULETA
+
+   ESTA ES LA PARTE FUNDAMENTAL.
+
+   Primero elegimos la categoría.
+
+   Después calculamos cuánto hay que girar
+   para colocar EXACTAMENTE el centro de
+   ese segmento bajo la flecha de las 12.
+
+   Como los centros son:
+
+   0º, 40º, 80º, 120º...
+
+   la rotación necesaria es:
+
+   -(index * 40)
    ========================================================= */
 
 function spinRoulette() {
@@ -1370,13 +1414,7 @@ function spinRoulette() {
 
 
     /*
-       ELEGIMOS PRIMERO LA CATEGORÍA.
-
-       Esto es importante:
-
-       La categoría que se selecciona aquí
-       será exactamente el segmento que
-       colocaremos bajo la flecha.
+       Elegimos una categoría.
     */
 
     const winningIndex =
@@ -1391,55 +1429,22 @@ function spinRoulette() {
 
 
     /*
-       GEOMETRÍA DE LA RULETA
-       -----------------------
+       Cada segmento mide 40º.
 
-       Hay 9 segmentos.
+       El centro del segmento elegido
+       está en:
 
-       360 / 9 = 40 grados.
-
-       El primer segmento ocupa:
-
-       0º - 40º
-
-       y su centro está en:
-
-       20º
-
-       El segundo:
-
-       40º - 80º
-
-       centro:
-
-       60º
-
-       etc.
-
-       En CSS, el 0º de conic-gradient
-       está arriba.
-
-       La flecha también está arriba.
-
-       Por tanto, para colocar el centro
-       del segmento seleccionado bajo
-       la flecha tenemos que girar:
-
-       -segmentCenter
+       winningIndex * 40
     */
 
     const segmentCenter =
-        winningIndex * 40 + 20;
+        winningIndex * 40;
 
 
     /*
-       Queremos que:
+       Para llevar ese centro a las 12:
 
-       segmentCenter + rotation = 0º
-
-       Por eso:
-
-       rotation = -segmentCenter
+       rotación = -segmentCenter
     */
 
     const targetRotation =
@@ -1447,11 +1452,7 @@ function spinRoulette() {
 
 
     /*
-       Añadimos vueltas completas para
-       que la ruleta dé varias vueltas
-       antes de detenerse.
-
-       Entre 5 y 7 vueltas.
+       Añadimos 5-7 vueltas completas.
     */
 
     const extraTurns =
@@ -1471,8 +1472,7 @@ function spinRoulette() {
 
 
     /*
-       Esperamos a que termine exactamente
-       la animación de 4 segundos.
+       Esperamos a que termine la animación.
     */
 
     setTimeout(
@@ -1540,9 +1540,9 @@ function getRandomQuestion(
 
 
     /*
-       Si ya hemos utilizado todas las
-       preguntas de esa categoría,
-       empezamos de nuevo.
+       Si hemos utilizado todas las
+       preguntas de la categoría,
+       volvemos a permitirlas.
     */
 
     if (
@@ -1758,8 +1758,7 @@ function selectAnswer(
 
 
     /*
-       Mostramos siempre cuál era
-       la respuesta correcta.
+       Mostrar la respuesta correcta.
     */
 
     buttons.forEach(
@@ -1798,7 +1797,7 @@ function selectAnswer(
 
 
 /* =========================================================
-   RESPUESTA CORRECTA
+   CORRECTA
    ========================================================= */
 
 function handleCorrectAnswer(
@@ -1826,8 +1825,7 @@ function handleCorrectAnswer(
 
 
     /*
-       Si ha conseguido los 5,
-       desbloqueamos la prueba.
+       5 aciertos = victoria.
     */
 
     if (
@@ -1849,8 +1847,7 @@ function handleCorrectAnswer(
 
 
     /*
-       Si todavía no ha llegado a 5,
-       puede volver a girar.
+       Continuar con otra tirada.
     */
 
     setTimeout(
@@ -1879,7 +1876,7 @@ function handleCorrectAnswer(
 
 
 /* =========================================================
-   RESPUESTA INCORRECTA
+   INCORRECTA
    ========================================================= */
 
 function handleWrongAnswer(
@@ -1906,9 +1903,7 @@ function handleWrongAnswer(
 
 
     /*
-       Si se queda sin vidas,
-       pierde la prueba y tiene
-       que empezar desde cero.
+       Sin vidas = derrota.
     */
 
     if (
@@ -1930,8 +1925,7 @@ function handleWrongAnswer(
 
 
     /*
-       Todavía tiene vidas:
-       puede continuar.
+       Todavía quedan vidas.
     */
 
     setTimeout(
@@ -1999,69 +1993,19 @@ function showWin() {
 
 
     /*
-       CLAVE DESBLOQUEADA
+       La pantalla de victoria ya contiene
+       todo el mensaje directamente en HTML:
 
-       Esta es la cuarta pieza del
-       código del escape room.
+       ¡PRUEBA SUPERADA!
+
+       Has desbloqueado la última clave:
+
+       ESTERNOCLEIDOMASTOIDEO
+
+       35: RLLF
+
+       Puedes proceder con la última prueba.
     */
-
-    passwordElement.textContent =
-        "ESTERNOCLEIDOMASTOIDEO";
-
-
-    /*
-       El texto "35: RLLF" ya está
-       preparado mediante el HTML.
-       Lo colocamos también mediante
-       JavaScript para que quede
-       garantizado aunque se modifique
-       posteriormente el HTML.
-    */
-
-    const unlockBox =
-        document.querySelector(
-            ".unlock-box"
-        );
-
-
-    let codeLine =
-        document.getElementById(
-            "code-line"
-        );
-
-
-    if (!codeLine) {
-
-        codeLine =
-            document.createElement(
-                "div"
-            );
-
-        codeLine.id =
-            "code-line";
-
-        codeLine.style.marginTop =
-            "8px";
-
-        codeLine.style.fontSize =
-            "1.1rem";
-
-        codeLine.style.fontWeight =
-            "900";
-
-        codeLine.style.color =
-            "#ffffff";
-
-        unlockBox.appendChild(
-            codeLine
-        );
-
-    }
-
-
-    codeLine.textContent =
-        "35: RLLF";
-
 
     isSpinning = false;
 
@@ -2091,7 +2035,7 @@ spinButton.addEventListener(
 
 
 /* =========================================================
-   PREPARACIÓN INICIAL
+   PREPARACIÓN
    ========================================================= */
 
 createWheelLabels();

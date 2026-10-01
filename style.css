@@ -30,6 +30,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 20px;
 }
 
@@ -47,11 +48,15 @@ body {
 .football-icon {
     font-size: 3rem;
     margin-bottom: 5px;
-    animation: floatFootball 2.5s ease-in-out infinite;
+
+    animation:
+        floatFootball 2.5s ease-in-out infinite;
 }
 
 @keyframes floatFootball {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
 
@@ -62,9 +67,14 @@ body {
 
 .header h1 {
     margin: 0;
-    font-size: clamp(2rem, 6vw, 3.4rem);
+
+    font-size:
+        clamp(2rem, 6vw, 3.4rem);
+
     font-weight: 900;
+
     letter-spacing: -1px;
+
     color: var(--yellow);
 
     text-shadow:
@@ -73,7 +83,9 @@ body {
 
 .header p {
     margin: 8px 0 0;
+
     color: var(--muted);
+
     font-size: 1rem;
 }
 
@@ -93,8 +105,11 @@ body {
             rgba(8, 20, 34, 0.98)
         );
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
     border-radius: 24px;
+
     padding: 35px;
 
     box-shadow:
@@ -119,25 +134,38 @@ body {
 
 .intro-text {
     max-width: 550px;
-    margin: 0 auto 25px;
+
+    margin:
+        0 auto 25px;
+
     line-height: 1.6;
+
     color: #dbe7f2;
+
     font-size: 1.1rem;
 }
 
 .rules {
     display: flex;
+
     justify-content: center;
+
     gap: 25px;
+
     flex-wrap: wrap;
+
     margin-bottom: 30px;
 }
 
 .rule {
     display: flex;
+
     align-items: center;
+
     gap: 8px;
+
     color: var(--muted);
+
     font-size: 0.95rem;
 }
 
@@ -148,9 +176,13 @@ body {
 .main-button,
 .spin-button {
     border: none;
+
     cursor: pointer;
+
     font-weight: 900;
+
     letter-spacing: 1px;
+
     color: #07111f;
 
     background:
@@ -169,14 +201,19 @@ body {
 }
 
 .main-button {
-    padding: 15px 40px;
+    padding:
+        15px 40px;
+
     border-radius: 12px;
+
     font-size: 1rem;
 }
 
 .main-button:hover,
 .spin-button:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 
     box-shadow:
         0 12px 30px rgba(255, 183, 3, 0.35);
@@ -189,12 +226,17 @@ body {
 
 .scoreboard {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 15px;
 
     margin-bottom: 20px;
-    padding: 14px 20px;
+
+    padding:
+        14px 20px;
 
     border-radius: 16px;
 
@@ -207,20 +249,27 @@ body {
 
 .score-item {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 }
 
 .score-label {
     color: var(--muted);
+
     font-size: 0.75rem;
+
     font-weight: 800;
+
     letter-spacing: 1px;
 }
 
 .score-value {
     color: var(--yellow);
+
     font-size: 1.2rem;
+
     font-weight: 900;
 }
 
@@ -237,13 +286,17 @@ body {
 .roulette-wrapper {
     position: relative;
 
-    width: min(480px, 90vw);
+    width:
+        min(480px, 90vw);
+
     aspect-ratio: 1 / 1;
 
-    margin: 15px auto 25px;
+    margin:
+        15px auto 25px;
 }
 
 .roulette {
+
     position: relative;
 
     width: 100%;
@@ -253,13 +306,27 @@ body {
 
     overflow: hidden;
 
-    border: 8px solid #f1f5f9;
+    border:
+        8px solid #f1f5f9;
 
     box-shadow:
         0 15px 50px rgba(0, 0, 0, 0.5);
 
+    /*
+       IMPORTANTE:
+
+       El primer segmento está centrado
+       exactamente en las 12 en punto.
+
+       Va de 340º a 360º y de 0º a 20º.
+
+       Después cada segmento ocupa 40º.
+    */
+
     background:
         conic-gradient(
+            from -20deg,
+
             #2563eb 0deg 40deg,
             #ef4444 40deg 80deg,
             #16a34a 80deg 120deg,
@@ -281,20 +348,23 @@ body {
 }
 
 
-/*
-   Cada etiqueta está posicionada mediante
-   coordenadas polares.
-
-   NO se inclina el texto.
-*/
+/* =====================================================
+   ETIQUETAS DE LA RULETA
+   ===================================================== */
 
 .roulette-label {
+
     position: absolute;
 
     left: 50%;
     top: 50%;
 
     width: 150px;
+
+    /*
+       El ángulo indica el centro exacto
+       del segmento.
+    */
 
     transform:
         translate(-50%, -50%)
@@ -320,55 +390,55 @@ body {
     z-index: 5;
 }
 
-.roulette-label span {
-    display: block;
-
-    margin-top: 4px;
-
-    font-size: 0.65rem;
-
-    font-weight: 700;
-}
-
 
 /*
-   Posiciones de las 9 categorías.
+   AHORA LOS CENTROS ESTÁN EN:
+
+   0º   = 12h
+   40º  = 1:20
+   80º  = 2:40
+   120º = 4h
+   160º = 5:20
+   200º = 6:40
+   240º = 8h
+   280º = 9:20
+   320º = 10:40
 */
 
 .label-1 {
-    --angle: 20deg;
+    --angle: 0deg;
 }
 
 .label-2 {
-    --angle: 60deg;
+    --angle: 40deg;
 }
 
 .label-3 {
-    --angle: 100deg;
+    --angle: 80deg;
 }
 
 .label-4 {
-    --angle: 140deg;
+    --angle: 120deg;
 }
 
 .label-5 {
-    --angle: 180deg;
+    --angle: 160deg;
 }
 
 .label-6 {
-    --angle: 220deg;
+    --angle: 200deg;
 }
 
 .label-7 {
-    --angle: 260deg;
+    --angle: 240deg;
 }
 
 .label-8 {
-    --angle: 300deg;
+    --angle: 280deg;
 }
 
 .label-9 {
-    --angle: 340deg;
+    --angle: 320deg;
 }
 
 
@@ -377,6 +447,7 @@ body {
    ===================================================== */
 
 .roulette-center {
+
     position: absolute;
 
     width: 95px;
@@ -391,6 +462,7 @@ body {
     border-radius: 50%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -418,6 +490,7 @@ body {
    ===================================================== */
 
 .roulette-pointer {
+
     position: absolute;
 
     z-index: 20;
@@ -439,6 +512,7 @@ body {
 }
 
 .spin-button {
+
     display: block;
 
     margin:
@@ -453,8 +527,12 @@ body {
 }
 
 .spin-button:disabled {
+
     opacity: 0.5;
-    cursor: not-allowed;
+
+    cursor:
+        not-allowed;
+
     transform: none;
 }
 
@@ -464,7 +542,9 @@ body {
    ===================================================== */
 
 .category-display {
+
     width: fit-content;
+
     max-width: 90%;
 
     margin:
@@ -476,6 +556,7 @@ body {
     border-radius: 50px;
 
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -492,9 +573,13 @@ body {
 }
 
 .category-name {
+
     font-weight: 900;
+
     letter-spacing: 1px;
-    color: var(--yellow);
+
+    color:
+        var(--yellow);
 }
 
 
@@ -503,7 +588,9 @@ body {
    ===================================================== */
 
 .question-card {
+
     margin-top: 10px;
+
     text-align: center;
 
     animation:
@@ -511,18 +598,22 @@ body {
 }
 
 @keyframes questionAppear {
+
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform:
+            translateY(15px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 }
 
 .question-card h2 {
+
     margin:
         0 auto 25px;
 
@@ -540,6 +631,7 @@ body {
    ===================================================== */
 
 .answers {
+
     display: grid;
 
     grid-template-columns:
@@ -553,22 +645,28 @@ body {
 }
 
 .answer-button {
+
     min-height: 65px;
 
-    padding: 12px 16px;
+    padding:
+        12px 16px;
 
     border:
         1px solid rgba(255, 255, 255, 0.1);
 
     border-radius: 12px;
 
-    background: #172b40;
+    background:
+        #172b40;
 
-    color: var(--white);
+    color:
+        var(--white);
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     font-size: 0.95rem;
+
     font-weight: 700;
 
     transition:
@@ -578,7 +676,9 @@ body {
 }
 
 .answer-button:hover {
-    background: #21415f;
+
+    background:
+        #21415f;
 
     border-color:
         var(--yellow);
@@ -588,6 +688,7 @@ body {
 }
 
 .answer-button.correct {
+
     background:
         rgba(22, 199, 132, 0.25);
 
@@ -599,6 +700,7 @@ body {
 }
 
 .answer-button.wrong {
+
     background:
         rgba(239, 68, 68, 0.25);
 
@@ -620,6 +722,7 @@ body {
    ===================================================== */
 
 .question-feedback {
+
     margin-top: 20px;
 
     padding:
@@ -633,6 +736,7 @@ body {
 }
 
 .question-feedback.correct {
+
     background:
         rgba(22, 199, 132, 0.12);
 
@@ -641,6 +745,7 @@ body {
 }
 
 .question-feedback.wrong {
+
     background:
         rgba(239, 68, 68, 0.12);
 
@@ -658,11 +763,14 @@ body {
 }
 
 .result-icon {
+
     font-size: 5rem;
+
     margin-bottom: 10px;
 }
 
 .result-card h2 {
+
     margin:
         0 0 15px;
 
@@ -670,6 +778,7 @@ body {
 }
 
 .result-card p {
+
     color:
         var(--muted);
 
@@ -688,46 +797,20 @@ body {
         var(--yellow);
 }
 
-.final-score {
-    margin:
-        25px auto 30px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-}
-
-.final-score span {
-    font-size: 4rem;
-
-    font-weight: 900;
-
-    color:
-        var(--yellow);
-}
-
-.final-score small {
-    color:
-        var(--muted);
-
-    font-size: 0.9rem;
-}
-
 
 /* =====================================================
    DESBLOQUEO
    ===================================================== */
 
 .unlock-box {
+
     margin:
-        30px auto 20px;
+        25px auto 15px;
 
     padding:
         22px;
 
-    max-width: 400px;
+    max-width: 600px;
 
     border:
         2px solid var(--yellow);
@@ -745,6 +828,7 @@ body {
 }
 
 .unlock-box span {
+
     color:
         var(--muted);
 
@@ -756,19 +840,125 @@ body {
 }
 
 .unlock-box strong {
+
     color:
         var(--yellow);
 
-    font-size: 2.5rem;
+    font-size:
+        clamp(1.5rem, 5vw, 2.5rem);
 
-    letter-spacing: 6px;
+    letter-spacing:
+        3px;
+
+    overflow-wrap:
+        anywhere;
 }
 
-.small-final-text {
-    font-size: 0.85rem !important;
+
+/* =====================================================
+   MENSAJE FINAL
+   ===================================================== */
+
+.victory-message {
+
+    margin-bottom:
+        5px !important;
 
     color:
-        #72869b !important;
+        #dbe7f2 !important;
+
+    font-weight:
+        700;
+}
+
+.code-line {
+
+    margin:
+        15px auto 20px;
+
+    font-size:
+        1.5rem;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        3px;
+
+    color:
+        #ffffff;
+
+    background:
+        rgba(22, 199, 132, 0.12);
+
+    border:
+        1px solid rgba(22, 199, 132, 0.4);
+
+    border-radius:
+        12px;
+
+    padding:
+        12px 20px;
+
+    width:
+        fit-content;
+}
+
+.last-test-message {
+
+    margin-top:
+        20px !important;
+
+    color:
+        var(--yellow) !important;
+
+    font-size:
+        1.1rem !important;
+
+    font-weight:
+        900;
+
+}
+
+
+/* =====================================================
+   PANTALLA DERROTA
+   ===================================================== */
+
+.final-score {
+
+    margin:
+        25px auto 30px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+}
+
+.final-score span {
+
+    font-size:
+        4rem;
+
+    font-weight:
+        900;
+
+    color:
+        var(--yellow);
+}
+
+.final-score small {
+
+    color:
+        var(--muted);
+
+    font-size:
+        0.9rem;
 }
 
 
@@ -779,34 +969,49 @@ body {
 @media (max-width: 600px) {
 
     body {
-        padding: 12px;
+        padding:
+            12px;
     }
 
     .card {
+
         padding:
             22px 16px;
 
-        border-radius: 18px;
+        border-radius:
+            18px;
     }
 
     .scoreboard {
+
         padding:
             12px 14px;
     }
 
     .score-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            3px;
     }
 
     .lives {
-        font-size: 0.95rem;
+        font-size:
+            0.95rem;
     }
 
     .roulette-label {
-        width: 100px;
-        font-size: 0.72rem;
+
+        width:
+            100px;
+
+        font-size:
+            0.72rem;
 
         transform:
             translate(-50%, -50%)
@@ -815,39 +1020,61 @@ body {
             rotate(calc(var(--angle) * -1));
     }
 
-    .roulette-label span {
-        font-size: 0.48rem;
-    }
-
     .roulette-center {
-        width: 70px;
-        height: 70px;
-        font-size: 1.7rem;
+
+        width:
+            70px;
+
+        height:
+            70px;
+
+        font-size:
+            1.7rem;
     }
 
     .answers {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
     .answer-button {
-        min-height: 58px;
+
+        min-height:
+            58px;
     }
 
     .rules {
-        flex-direction: column;
-        align-items: flex-start;
 
-        width: fit-content;
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        width:
+            fit-content;
 
         margin:
             0 auto 25px;
     }
 
     .result-icon {
-        font-size: 4rem;
+        font-size:
+            4rem;
     }
 
     .result-card h2 {
-        font-size: 1.7rem;
+        font-size:
+            1.7rem;
     }
+
+    .unlock-box strong {
+        font-size:
+            1.35rem;
+
+        letter-spacing:
+            2px;
+    }
+
 }

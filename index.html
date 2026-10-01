@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>La Ruleta del Fútbol</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="game-container">
+
+
+        <!-- ==============================
+             CABECERA
+             ============================== -->
+
+        <header class="header">
+
+            <div class="football-icon">
+                ⚽
+            </div>
+
+            <h1>
+                LA RULETA DEL FÚTBOL
+            </h1>
+
+            <p>
+                ¿Cuánto sabes realmente de fútbol?
+            </p>
+
+        </header>
+
+
+        <!-- ==============================
+             PANTALLA INICIAL
+             ============================== -->
+
+        <section
+            id="start-screen"
+            class="screen"
+        >
+
+            <div class="card intro-card">
+
+                <div class="trophy">
+                    🏆
+                </div>
+
+                <h2>
+                    LA PRUEBA 4
+                </h2>
+
+                <p class="intro-text">
+                    Consigue <strong>5 aciertos</strong>
+                    antes de quedarte sin vidas.
+                </p>
+
+                <div class="rules">
+
+                    <div class="rule">
+                        <span>❤️</span>
+                        <span>
+                            Tienes <strong>3 vidas</strong>
+                        </span>
+                    </div>
+
+                    <div class="rule">
+                        <span>🎯</span>
+                        <span>
+                            Necesitas <strong>5 aciertos</strong>
+                        </span>
+                    </div>
+
+                    <div class="rule">
+                        <span>🎰</span>
+                        <span>
+                            La categoría es aleatoria
+                        </span>
+                    </div>
+
+                </div>
+
+                <button
+                    id="start-button"
+                    class="main-button"
+                >
+                    EMPEZAR
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             PANTALLA DEL JUEGO
+             ============================== -->
+
+        <section
+            id="game-screen"
+            class="screen hidden"
+        >
+
+
+            <!-- MARCADOR -->
+
+            <div class="scoreboard">
+
+                <div class="score-item">
+
+                    <span class="score-label">
+                        ACIERTOS
+                    </span>
+
+                    <span
+                        id="score"
+                        class="score-value"
+                    >
+                        0 / 5
+                    </span>
+
+                </div>
+
+
+                <div class="score-item">
+
+                    <span class="score-label">
+                        VIDAS
+                    </span>
+
+                    <span
+                        id="lives"
+                        class="lives"
+                    >
+                        ❤️ ❤️ ❤️
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- RULETA -->
+
+            <div class="roulette-wrapper">
+
+                <div
+                    id="roulette"
+                    class="roulette"
+                >
+
+                    <div
+                        class="roulette-segment segment-1"
+                    >
+                        🏆
+                        <span>
+                            BALÓN<br>
+                            DE ORO
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-2"
+                    >
+                        ⭐
+                        <span>
+                            CHAMPIONS
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-3"
+                    >
+                        🌍
+                        <span>
+                            MUNDIAL
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-4"
+                    >
+                        💰
+                        <span>
+                            FICHAJES
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-5"
+                    >
+                        🟡
+                        <span>
+                            CÁDIZ CF
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-6"
+                    >
+                        🎮
+                        <span>
+                            FC 27
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-7"
+                    >
+                        🇪🇸
+                        <span>
+                            LALIGA
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-8"
+                    >
+                        🏴
+                        <span>
+                            PREMIER
+                        </span>
+                    </div>
+
+                    <div
+                        class="roulette-segment segment-9"
+                    >
+                        🥴
+                        <span>
+                            MATRACA
+                        </span>
+                    </div>
+
+                    <div class="roulette-center">
+                        ⚽
+                    </div>
+
+                </div>
+
+
+                <div class="roulette-pointer">
+                    ▼
+                </div>
+
+            </div>
+
+
+            <!-- BOTÓN GIRAR -->
+
+            <button
+                id="spin-button"
+                class="spin-button"
+            >
+                GIRAR RULETA
+            </button>
+
+
+            <!-- CATEGORÍA -->
+
+            <div
+                id="category-display"
+                class="category-display hidden"
+            >
+
+                <span
+                    id="category-icon"
+                    class="category-icon"
+                >
+                    ⚽
+                </span>
+
+                <span
+                    id="category-name"
+                    class="category-name"
+                >
+                    CATEGORÍA
+                </span>
+
+            </div>
+
+
+            <!-- PREGUNTA -->
+
+            <div
+                id="question-card"
+                class="card question-card hidden"
+            >
+
+                <h2
+                    id="question"
+                >
+                    Pregunta
+                </h2>
+
+
+                <div
+                    id="answers"
+                    class="answers"
+                >
+
+                </div>
+
+
+                <div
+                    id="question-feedback"
+                    class="question-feedback hidden"
+                >
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ==============================
+             PANTALLA DE DERROTA
+             ============================== -->
+
+        <section
+            id="lose-screen"
+            class="screen hidden"
+        >
+
+            <div class="card result-card lose-card">
+
+                <div class="result-icon">
+                    💀
+                </div>
+
+                <h2>
+                    HAS PERDIDO
+                </h2>
+
+                <p>
+                    Te has quedado sin vidas.
+                </p>
+
+                <div class="final-score">
+
+                    <span id="final-score">
+                        0
+                    </span>
+
+                    <small>
+                        aciertos conseguidos
+                    </small>
+
+                </div>
+
+                <button
+                    id="restart-button"
+                    class="main-button"
+                >
+                    VOLVER A INTENTARLO
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             PANTALLA DE VICTORIA
+             ============================== -->
+
+        <section
+            id="win-screen"
+            class="screen hidden"
+        >
+
+            <div class="card result-card win-card">
+
+                <div class="result-icon">
+                    🏆
+                </div>
+
+                <h2>
+                    ¡PRUEBA SUPERADA!
+                </h2>
+
+                <p>
+                    Has conseguido 5 aciertos
+                    consecutivos.
+                </p>
+
+                <div class="unlock-box">
+
+                    <span>
+                        PIEZA 4 DESBLOQUEADA
+                    </span>
+
+                    <strong id="password">
+                        XX
+                    </strong>
+
+                </div>
+
+                <p class="small-final-text">
+                    Guarda esta pieza.
+                    La necesitarás al final.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="game.js"></script>
+
+</body>
+
+</html>

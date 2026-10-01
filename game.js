@@ -630,34 +630,6 @@ const questionBank = {
 
         {
             question:
-                "¿Quién es una de las grandes leyendas goleadoras históricas del Cádiz?",
-
-            answers: [
-                "Mágico González",
-                "Álvaro Negredo",
-                "Lucas Pérez",
-                "Salvi Sánchez"
-            ],
-
-            correct: 0
-        },
-
-        {
-            question:
-                "¿Qué jugador es conocido como Mágico González?",
-
-            answers: [
-                "Jorge González",
-                "Paco Baena",
-                "Pepe Mejías",
-                "Juan José"
-            ],
-
-            correct: 0
-        },
-
-        {
-            question:
                 "¿Qué colores identifican tradicionalmente al Cádiz CF?",
 
             answers: [
@@ -672,16 +644,16 @@ const questionBank = {
 
         {
             question:
-                "¿Cómo se conoce al estadio del Cádiz CF?",
+                "¿Cómo se conoce actualmente al estadio del Cádiz CF?",
 
             answers: [
-                "Ramón de Carranza",
                 "Nuevo Mirandilla",
+                "Ramón de Carranza",
                 "El Carranza",
-                "Ambas B y C"
+                "La Tacita"
             ],
 
-            correct: 3
+            correct: 0
         }
 
     ],
@@ -695,13 +667,13 @@ const questionBank = {
 
         {
             question:
-                "¿Cómo se llama el nuevo espacio social de EA SPORTS FC 27?",
+                "¿Qué modo de juego está orientado a gestionar un club?",
 
             answers: [
-                "The Grounds",
-                "The Arena",
-                "FC Street",
-                "World Football"
+                "Carrera",
+                "Clubes",
+                "Ultimate Team",
+                "The Grounds"
             ],
 
             correct: 0
@@ -723,7 +695,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué modo incorpora una nueva Galería FUT?",
+                "¿Qué modo está centrado en construir tu plantilla con cartas?",
 
             answers: [
                 "Carrera",
@@ -737,21 +709,7 @@ const questionBank = {
 
         {
             question:
-                "¿Qué mercado ha sido reconstruido en FC 27?",
-
-            answers: [
-                "Mercado de camisetas",
-                "Mercado de estadios",
-                "Mercado de transferibles",
-                "Mercado de entrenadores"
-            ],
-
-            correct: 2
-        },
-
-        {
-            question:
-                "¿Qué espacio permite jugar pachangas y partidos dentro de FC 27?",
+                "¿Qué espacio permite jugar partidos y actividades de forma más informal?",
 
             answers: [
                 "The Grounds",
@@ -765,13 +723,27 @@ const questionBank = {
 
         {
             question:
-                "¿Qué modo de juego está orientado a gestionar un club?",
+                "¿Qué modo permite jugar partidos cooperativos con otros jugadores?",
+
+            answers: [
+                "Clubes",
+                "Carrera",
+                "Ultimate Team",
+                "Entrenamiento"
+            ],
+
+            correct: 0
+        },
+
+        {
+            question:
+                "¿Qué modo está basado principalmente en la gestión de un equipo?",
 
             answers: [
                 "Carrera",
                 "Clubes",
                 "The Grounds",
-                "Volta"
+                "Ultimate Team"
             ],
 
             correct: 0
@@ -1090,15 +1062,13 @@ const questionBank = {
 
 
 /* =========================================================
-   ESTADO
+   ESTADO DEL JUEGO
    ========================================================= */
 
 let score = 0;
-
 let lives = MAX_LIVES;
 
 let currentCategory = null;
-
 let currentQuestion = null;
 
 let isSpinning = false;
@@ -1109,7 +1079,7 @@ let wheelRotation = 0;
 
 
 /* =========================================================
-   ELEMENTOS
+   ELEMENTOS HTML
    ========================================================= */
 
 const startScreen =
@@ -1174,7 +1144,7 @@ const passwordElement =
 
 
 /* =========================================================
-   CREAR ETIQUETAS DE LA RULETA
+   CREAR LAS ETIQUETAS
    ========================================================= */
 
 function createWheelLabels() {
@@ -1199,10 +1169,8 @@ function createWheelLabels() {
             );
 
 
-            label.innerHTML = `
-                ${category.icon}
-                ${category.name}
-            `;
+            label.innerHTML =
+                `${category.icon} ${category.name}`;
 
 
             rouletteLabels.appendChild(
@@ -1222,11 +1190,9 @@ function createWheelLabels() {
 function startGame() {
 
     score = 0;
-
     lives = MAX_LIVES;
 
     currentCategory = null;
-
     currentQuestion = null;
 
     isSpinning = false;
@@ -1247,12 +1213,27 @@ function startGame() {
     );
 
 
+    roulette.style.transition =
+        "none";
+
     roulette.style.transform =
         "rotate(0deg)";
 
 
-    updateScore();
+    /*
+       Forzamos al navegador a registrar
+       el reset antes de volver a activar
+       la animación.
+    */
 
+    roulette.offsetHeight;
+
+
+    roulette.style.transition =
+        "transform 4s cubic-bezier(0.15, 0.85, 0.15, 1)";
+
+
+    updateScore();
     updateLives();
 
 
@@ -1280,6 +1261,7 @@ function startGame() {
     questionCard.classList.add(
         "hidden"
     );
+
 
     feedbackElement.className =
         "question-feedback hidden";
@@ -1388,7 +1370,13 @@ function spinRoulette() {
 
 
     /*
-       Elegimos el segmento ganador.
+       ELEGIMOS PRIMERO LA CATEGORÍA.
+
+       Esto es importante:
+
+       La categoría que se selecciona aquí
+       será exactamente el segmento que
+       colocaremos bajo la flecha.
     */
 
     const winningIndex =
@@ -1403,31 +1391,67 @@ function spinRoulette() {
 
 
     /*
-       Cada segmento ocupa 40º.
+       GEOMETRÍA DE LA RULETA
+       -----------------------
 
-       El centro del segmento es:
+       Hay 9 segmentos.
+
+       360 / 9 = 40 grados.
+
+       El primer segmento ocupa:
+
+       0º - 40º
+
+       y su centro está en:
 
        20º
+
+       El segundo:
+
+       40º - 80º
+
+       centro:
+
        60º
-       100º
-       ...
 
-       La flecha está a 270º.
+       etc.
 
-       Queremos que el centro del segmento
-       ganador termine exactamente bajo ella.
+       En CSS, el 0º de conic-gradient
+       está arriba.
+
+       La flecha también está arriba.
+
+       Por tanto, para colocar el centro
+       del segmento seleccionado bajo
+       la flecha tenemos que girar:
+
+       -segmentCenter
     */
 
     const segmentCenter =
         winningIndex * 40 + 20;
 
 
-    const desiredRotation =
-        270 - segmentCenter;
+    /*
+       Queremos que:
+
+       segmentCenter + rotation = 0º
+
+       Por eso:
+
+       rotation = -segmentCenter
+    */
+
+    const targetRotation =
+        -segmentCenter;
 
 
     /*
-       Damos entre 5 y 7 vueltas completas.
+       Añadimos vueltas completas para
+       que la ruleta dé varias vueltas
+       antes de detenerse.
+
+       Entre 5 y 7 vueltas.
     */
 
     const extraTurns =
@@ -1437,26 +1461,19 @@ function spinRoulette() {
         );
 
 
-    /*
-       Normalizamos el ángulo deseado
-       para evitar acumulaciones extrañas.
-    */
-
-    const normalizedTarget =
-        (
-            desiredRotation % 360 +
-            360
-        ) % 360;
-
-
     wheelRotation =
         extraTurns * 360 +
-        normalizedTarget;
+        targetRotation;
 
 
     roulette.style.transform =
         `rotate(${wheelRotation}deg)`;
 
+
+    /*
+       Esperamos a que termine exactamente
+       la animación de 4 segundos.
+    */
 
     setTimeout(
         () => {
@@ -1511,6 +1528,22 @@ function getRandomQuestion(
     const questions =
         questionBank[categoryId];
 
+
+    if (
+        !questions ||
+        questions.length === 0
+    ) {
+
+        return null;
+
+    }
+
+
+    /*
+       Si ya hemos utilizado todas las
+       preguntas de esa categoría,
+       empezamos de nuevo.
+    */
 
     if (
         usedQuestions[categoryId].length >=
@@ -1612,6 +1645,17 @@ function showQuestion() {
         );
 
 
+    if (!currentQuestion) {
+
+        isSpinning = false;
+
+        spinButton.disabled = false;
+
+        return;
+
+    }
+
+
     questionElement.textContent =
         currentQuestion.question;
 
@@ -1690,7 +1734,7 @@ function showQuestion() {
 
 
 /* =========================================================
-   RESPONDER
+   SELECCIONAR RESPUESTA
    ========================================================= */
 
 function selectAnswer(
@@ -1712,6 +1756,11 @@ function selectAnswer(
         }
     );
 
+
+    /*
+       Mostramos siempre cuál era
+       la respuesta correcta.
+    */
 
     buttons.forEach(
         button => {
@@ -1749,7 +1798,7 @@ function selectAnswer(
 
 
 /* =========================================================
-   CORRECTA
+   RESPUESTA CORRECTA
    ========================================================= */
 
 function handleCorrectAnswer(
@@ -1776,6 +1825,11 @@ function handleCorrectAnswer(
         `${score} de ${TARGET_SCORE} aciertos.`;
 
 
+    /*
+       Si ha conseguido los 5,
+       desbloqueamos la prueba.
+    */
+
     if (
         score >= TARGET_SCORE
     ) {
@@ -1793,6 +1847,11 @@ function handleCorrectAnswer(
 
     }
 
+
+    /*
+       Si todavía no ha llegado a 5,
+       puede volver a girar.
+    */
 
     setTimeout(
         () => {
@@ -1820,7 +1879,7 @@ function handleCorrectAnswer(
 
 
 /* =========================================================
-   INCORRECTA
+   RESPUESTA INCORRECTA
    ========================================================= */
 
 function handleWrongAnswer(
@@ -1846,6 +1905,12 @@ function handleWrongAnswer(
         "❌ ¡INCORRECTO! Has perdido una vida.";
 
 
+    /*
+       Si se queda sin vidas,
+       pierde la prueba y tiene
+       que empezar desde cero.
+    */
+
     if (
         lives <= 0
     ) {
@@ -1863,6 +1928,11 @@ function handleWrongAnswer(
 
     }
 
+
+    /*
+       Todavía tiene vidas:
+       puede continuar.
+    */
 
     setTimeout(
         () => {
@@ -1929,13 +1999,68 @@ function showWin() {
 
 
     /*
-       De momento dejamos XX.
-       Más adelante pondremos aquí
-       la cuarta pieza definitiva.
+       CLAVE DESBLOQUEADA
+
+       Esta es la cuarta pieza del
+       código del escape room.
     */
 
     passwordElement.textContent =
-        "XX";
+        "ESTERNOCLEIDOMASTOIDEO";
+
+
+    /*
+       El texto "35: RLLF" ya está
+       preparado mediante el HTML.
+       Lo colocamos también mediante
+       JavaScript para que quede
+       garantizado aunque se modifique
+       posteriormente el HTML.
+    */
+
+    const unlockBox =
+        document.querySelector(
+            ".unlock-box"
+        );
+
+
+    let codeLine =
+        document.getElementById(
+            "code-line"
+        );
+
+
+    if (!codeLine) {
+
+        codeLine =
+            document.createElement(
+                "div"
+            );
+
+        codeLine.id =
+            "code-line";
+
+        codeLine.style.marginTop =
+            "8px";
+
+        codeLine.style.fontSize =
+            "1.1rem";
+
+        codeLine.style.fontWeight =
+            "900";
+
+        codeLine.style.color =
+            "#ffffff";
+
+        unlockBox.appendChild(
+            codeLine
+        );
+
+    }
+
+
+    codeLine.textContent =
+        "35: RLLF";
 
 
     isSpinning = false;
@@ -1966,7 +2091,7 @@ spinButton.addEventListener(
 
 
 /* =========================================================
-   PREPARAR RULETA AL CARGAR
+   PREPARACIÓN INICIAL
    ========================================================= */
 
 createWheelLabels();
